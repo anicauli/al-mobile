@@ -1,0 +1,51 @@
+services:
+  al_mobile_laravel:
+    container_name: 'al_mobile_laravel'
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./:/var/www/html/
+      - ./php-custom.ini:/usr/local/etc/php/conf.d/php-custom.ini
+    ports:
+      - "8060:80"
+    networks:
+      - al_mobile_network
+  al_mobile_mysql:
+    container_name: 'al_mobile_mysql'
+    image: "mysql:8.0"
+    environment:
+      MYSQL_DATABASE: 'al_mobile_user'
+      MYSQL_ROOT_PASSWORD: 'al_mobile_password'
+    ports:
+      - "33070:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - al_mobile_network
+  al_mobile_mysql_testing:
+    container_name: 'al_mobile_mysql_testing'
+    image: "mysql:8.0"
+    environment:
+      MYSQL_DATABASE: 'al_mobile_user'
+      MYSQL_ROOT_PASSWORD: 'al_mobile_password'
+    ports:
+      - "33071:3306"
+    volumes:
+      - mysql_test_data:/var/lib/mysql
+    networks:
+      - al_mobile_network
+  al_mobile_redis:
+    container_name: 'al_mobile_redis'
+    image: 'redis:alpine'
+    ports:
+      - "63801:6379"
+    environment:
+      - SHELL=/bin/bash
+    networks:
+      - al_mobile_network
+volumes:
+  mysql_data:
+  mysql_test_data:
+networks:
+  al_mobile_network:
