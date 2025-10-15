@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\Auth;
 
-use App\Enums\UserType;
 use App\Services\User\UserReadService;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -25,7 +24,6 @@ class RegisterRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'type' => ['required', 'in:' . implode(',', array_map(fn($type) => $type->value, UserType::cases()))],
             'email' => [
                 'required', 'string', 'email', 'max:255',
                 function ($attribute, $value, $fail) {

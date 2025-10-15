@@ -2,8 +2,6 @@
 
 namespace App\Http\Requests\Auth;
 
-use App\Enums\UserType;
-use App\Services\User\UserReadService;
 use Illuminate\Foundation\Http\FormRequest;
 
 class LoginRequest extends FormRequest
