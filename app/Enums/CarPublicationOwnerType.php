@@ -4,6 +4,6 @@ namespace App\Enums;
 
 enum CarPublicationOwnerType: string
 {
-    case New = 'New';
-    case Used = 'Used';
+    case New = 'new';
+    case Used = 'used';
 }

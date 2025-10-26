@@ -3,62 +3,62 @@
 return [
     [
         'label' => 'Black',
-        'value' => 'Black',
+        'value' => 'black',
     ],
     [
         'label' => 'Beige',
-        'value' => 'Beige',
+        'value' => 'beige',
     ],
     [
         'label' => 'Grey',
-        'value' => 'Grey',
+        'value' => 'grey',
     ],
     [
         'label' => 'Brown',
-        'value' => 'Brown',
+        'value' => 'brown',
     ],
     [
         'label' => 'White',
-        'value' => 'White',
+        'value' => 'white',
     ],
     [
         'label' => 'Orange',
-        'value' => 'Orange',
+        'value' => 'orange',
     ],
     [
         'label' => 'Blue',
-        'value' => 'Blue',
+        'value' => 'blue',
     ],
     [
         'label' => 'Yellow',
-        'value' => 'Yellow',
+        'value' => 'yellow',
     ],
     [
         'label' => 'Red',
-        'value' => 'Red',
+        'value' => 'red',
     ],
     [
         'label' => 'Green',
-        'value' => 'Green',
+        'value' => 'green',
     ],
     [
         'label' => 'Silver',
-        'value' => 'Silver',
+        'value' => 'silver',
     ],
     [
         'label' => 'Gold',
-        'value' => 'Gold',
+        'value' => 'gold',
     ],
     [
         'label' => 'Purple',
-        'value' => 'Purple',
+        'value' => 'purple',
     ],
     [
         'label' => 'Matte',
-        'value' => 'Matte',
+        'value' => 'matte',
     ],
     [
         'label' => 'Metallic',
-        'value' => 'Metallic',
+        'value' => 'metallic',
     ],
 ];

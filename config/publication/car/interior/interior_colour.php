@@ -3,30 +3,30 @@
 return [
     [
         'label' => 'Beige',
-        'value' => 'Beige',
+        'value' => 'beige',
     ],
     [
         'label' => 'Black',
-        'value' => 'Black',
+        'value' => 'black',
     ],
     [
         'label' => 'Blue',
-        'value' => 'Blue',
+        'value' => 'blue',
     ],
     [
         'label' => 'Brown',
-        'value' => 'Brown',
+        'value' => 'brown',
     ],
     [
         'label' => 'Grey',
-        'value' => 'Grey',
+        'value' => 'grey',
     ],
     [
         'label' => 'Red',
-        'value' => 'Red',
+        'value' => 'red',
     ],
     [
         'label' => 'Other',
-        'value' => 'Other',
+        'value' => 'other',
     ],
 ];

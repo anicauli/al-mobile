@@ -3,14 +3,14 @@
 return [
     [
         'label' => 'Automatic',
-        'value' => 'Automatic',
+        'value' => 'automatic',
     ],
     [
         'label' => 'Semi-automatic',
-        'value' => 'Semi-automatic',
+        'value' => 'semi_automatic',
     ],
     [
         'label' => 'Manual gearbox',
-        'value' => 'Manual gearbox',
+        'value' => 'manual_gearbox',
     ],
 ];

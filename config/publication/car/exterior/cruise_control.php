@@ -3,10 +3,10 @@
 return [
     [
         'label' => 'Cruise control',
-        'value' => 'Cruise control',
+        'value' => 'cruise_control',
     ],
     [
         'label' => 'Adaptive Cruise Control',
-        'value' => 'Adaptive Cruise Control',
+        'value' => 'adaptive_cruise_control',
     ],
 ];

@@ -3,18 +3,18 @@
 return [
     [
         'label' => 'Pre-registration',
-        'value' => 'Pre-registration',
+        'value' => 'pre_registration',
     ],
     [
         'label' => 'Employee\'s car',
-        'value' => 'Employee\'s car',
+        'value' => 'employees_car',
     ],
     [
         'label' => 'Classic Vehicle',
-        'value' => 'Classic Vehicle',
+        'value' => 'classic_cehicle',
     ],
     [
         'label' => 'Demonstration Vehicle',
-        'value' => 'Demonstration Vehicle',
+        'value' => 'demonstration_vehicle',
     ],
 ];

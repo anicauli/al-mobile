@@ -4,15 +4,15 @@ namespace App\Enums;
 
 enum CarPublicationFuelType: string
 {
-    case Petrol = 'Petrol';
-    case Diesel = 'Diesel';
-    case Electric = 'Electric';
-    case Ethanol = 'Ethanol';
-    case HybridDiesel = 'HybridDiesel';
-    case HybridPetrol = 'HybridPetrol';
-    case Hydrogen = 'Hydrogen';
-    case LPG = 'LPG';
-    case NaturalGas = 'NaturalGas';
-    case PlugInHybrid = 'PlugInHybrid';
-    case Other = 'Other';
+    case Petrol = 'petrol';
+    case Diesel = 'diesel';
+    case Electric = 'electric';
+    case Ethanol = 'ethanol';
+    case HybridDiesel = 'hybrid_diesel';
+    case HybridPetrol = 'hybrid_petrol';
+    case Hydrogen = 'hydrogen';
+    case LPG = 'lpg';
+    case NaturalGas = 'natural_gas';
+    case PlugInHybrid = 'plug_in_hybrid';
+    case Other = 'other';
 }

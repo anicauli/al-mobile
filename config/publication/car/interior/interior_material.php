@@ -3,30 +3,30 @@
 return [
     [
         'label' => 'Alcantara',
-        'value' => 'Alcantara',
+        'value' => 'alcantara',
     ],
     [
         'label' => 'Driver Airbag',
-        'value' => 'Driver Airbag',
+        'value' => 'driver_airbag',
     ],
     [
         'label' => 'Imitation leather',
-        'value' => 'Imitation leather',
+        'value' => 'imitation_leather',
     ],
     [
         'label' => 'Part leather',
-        'value' => 'Part leather',
+        'value' => 'part_leather',
     ],
     [
         'label' => 'Full leather',
-        'value' => 'Full leather',
+        'value' => 'full_leather',
     ],
     [
         'label' => 'Velour',
-        'value' => 'Velour',
+        'value' => 'velour',
     ],
     [
         'label' => 'Other',
-        'value' => 'Other',
+        'value' => 'other',
     ],
 ];
