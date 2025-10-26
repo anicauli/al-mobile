@@ -15,6 +15,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->uuidMorphs('publishable');
             $table->foreignUuid('user_id')->references('id')->on('users')->cascadeOnDelete();
+            $table->string('title');
             $table->string('status', 20)->default(\App\Enums\PublicationStatus::DRAFT->value);
             $table->timestamps();
             $table->softDeletes();

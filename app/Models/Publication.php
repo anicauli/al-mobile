@@ -7,18 +7,19 @@ use App\Traits\HasUuid;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @property string $id
  * @property string $user_id
+ * @property string $title
  * @property PublicationStatus $status
  * @property Carbon $created_at
  * @property Carbon $updated_at
  * @property Carbon $deleted_at
  * @property User $user
+ * @property Model $publishable
  */
 class Publication extends Model
 {
@@ -26,8 +27,11 @@ class Publication extends Model
 
     protected $fillable = [
         'user_id',
+        'title',
         'status',
     ];
+
+    protected $with = ['publishable'];
 
     protected function casts(): array
     {
