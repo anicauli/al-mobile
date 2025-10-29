@@ -52,20 +52,20 @@ class FilterMacroServiceProvider extends ServiceProvider
                     if (count($filter['filters'])) {
                         $builder->whereDoesntHave($filter['not_in_relationship'], function ($query) use ($filter, $customColumns) {
                             FilterMacroServiceProvider::applyFilters(
-                                $query, (array)$filter['filters'], $filter['operator'], $customColumns);
+                                $query, (array)$filter['filters'], $filter['operator'] ?? FilterOperator::AND->value, $customColumns);
                         });
                     }
                 } elseif (isset($filter['relationship'])) {
                     if (count($filter['filters'])) {
                         $builder->whereHas($filter['relationship'], function ($query) use ($filter, $customColumns) {
                             FilterMacroServiceProvider::applyFilters(
-                                $query, (array)$filter['filters'], $filter['operator'], $customColumns);
+                                $query, (array)$filter['filters'], $filter['operator'] ?? FilterOperator::AND->value, $customColumns);
                         });
                     }
                 } else {
                     $builder->where(function ($query) use ($filter, $customColumns) {
                         FilterMacroServiceProvider::applyFilters(
-                            $query, $filter['filters'], $filter['operator'], $customColumns);
+                            $query, $filter['filters'], $filter['operator'] ?? FilterOperator::AND->value, $customColumns);
                     });
                 }
             } else {

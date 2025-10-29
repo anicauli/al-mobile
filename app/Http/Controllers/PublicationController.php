@@ -14,7 +14,7 @@ use App\Utils\Table\Table;
 class PublicationController extends Controller
 {
 
-    public function index(PublicationFetchService $publicationFetchService): \Illuminate\Http\JsonResponse
+    public function list(PublicationFetchService $publicationFetchService): \Illuminate\Http\JsonResponse
     {
         /**
          * @var User $user
@@ -23,6 +23,18 @@ class PublicationController extends Controller
 
         $data = Table::basicCreate($publicationFetchService->fetch($user))
             ->paginateTable();
+
+        return response()->json($data, 200);
+    }
+    public function count(PublicationFetchService $publicationFetchService): \Illuminate\Http\JsonResponse
+    {
+        /**
+         * @var User $user
+         */
+        $user = auth()->user();
+
+        $data = Table::basicCreate($publicationFetchService->fetch($user))
+            ->count();
 
         return response()->json($data, 200);
     }

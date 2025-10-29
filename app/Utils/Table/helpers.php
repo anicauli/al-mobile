@@ -4,8 +4,8 @@ if (!function_exists('extractTableParams')) {
     function extractTableParams(?array $request = null): object
     {
         $request = $request ?? request()->all();
-        if (isset($request['table_operations']) && is_array($request['table_operations'])) {
-            $operations = $request['table_operations'];
+        if (isset($request['table']) && is_array($request['table'])) {
+            $operations = $request['table'];
 
             if (isset($operations['pagination']) && is_array($operations['pagination'])) {
                 $pagination = $operations['pagination'];
