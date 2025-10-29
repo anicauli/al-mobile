@@ -1,0 +1,44 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests\Publication\PublicationStoreRequest;
+use App\Http\Requests\Publication\PublicationUpdateRequest;
+use App\Models\Publication;
+use App\Models\User;
+use App\Services\Publication\PublicationCreateService;
+use App\Services\Publication\PublicationUpdateService;
+use Illuminate\Http\Request;
+
+class PublicationController extends Controller
+{
+    public function store(
+        PublicationCreateService $publicationCreateService,
+        PublicationStoreRequest $publicationStoreRequest,
+    ): \Illuminate\Http\JsonResponse
+    {
+        /**
+         * @var User $user
+         */
+        $user = auth()->user();
+
+        $publication = $publicationCreateService->create(
+            $user,
+            $publicationStoreRequest->title,
+            $publicationStoreRequest->publication_type,
+        );
+
+        return response()->json($publication, 201);
+    }
+
+    public function update(
+        PublicationUpdateService $publicationUpdateService,
+        PublicationUpdateRequest $publicationUpdateRequest,
+        Publication $publication
+    ): \Illuminate\Http\JsonResponse
+    {
+        $publication = $publicationUpdateService->update($publication, $publicationUpdateRequest->validated());
+
+        return response()->json($publication, 200);
+    }
+}

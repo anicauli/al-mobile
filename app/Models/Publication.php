@@ -20,6 +20,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Carbon $deleted_at
  * @property User $user
  * @property Model $publishable
+ * @property string $publishable_id
+ * @property string $publishable_type
  */
 class Publication extends Model
 {

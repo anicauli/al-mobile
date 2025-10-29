@@ -10,6 +10,8 @@ class CarPublication extends Model
 {
     use HasUuid;
 
+    protected $guarded = ['id'];
+
     public function publication(): MorphOne
     {
         return $this->morphOne(Publication::class, 'publishable');

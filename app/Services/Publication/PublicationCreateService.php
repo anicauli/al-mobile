@@ -2,6 +2,7 @@
 
 namespace App\Services\Publication;
 
+use App\Enums\PublicationStatus;
 use App\Models\CarPublication;
 use App\Models\Publication;
 use App\Models\User;
@@ -19,7 +20,8 @@ class PublicationCreateService
             $publicationTypeInstance->save();
             return $publicationTypeInstance->publication()->create([
                 'title' => $title,
-                'user_id' => $user->id
+                'user_id' => $user->id,
+                'status' => PublicationStatus::DRAFT,
             ])->fresh();
         });
     }
