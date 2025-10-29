@@ -32,6 +32,14 @@ class PublicationUpdateRequest extends FormRequest
             $this->all()
         );
 
-        return PublicationFields::getValidationRules($publication->publishable_type, $publicationData);
+        $validationRules = PublicationFields::getValidationRules($publication->publishable_type, $publicationData);
+
+        $nullFields = [];
+        foreach ($validationRules['to_empty_fields'] as $field) {
+            $nullFields[$field] = null;
+        }
+        $this->merge($nullFields);
+
+        return $validationRules['rules'];
     }
 }

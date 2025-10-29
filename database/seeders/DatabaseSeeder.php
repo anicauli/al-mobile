@@ -6,6 +6,7 @@ use App\Enums\UserType;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,12 +20,14 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Staff',
             'email' => 'staff@example.com',
-            'type' => UserType::STAFF
+            'type' => UserType::STAFF,
+            'password' => Hash::make('password')
         ]);
         User::factory()->create([
             'name' => 'User',
             'email' => 'user@example.com',
-            'type' => UserType::CLIENT
+            'type' => UserType::CLIENT,
+            'password' => Hash::make('password')
         ]);
     }
 }

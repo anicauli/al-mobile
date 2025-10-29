@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PublicationController;
 use \Illuminate\Support\Facades\Route;
 
 Route::prefix('auth')->name('auth.')->group(function () {
@@ -14,4 +15,10 @@ Route::prefix('auth')->name('auth.')->group(function () {
     Route::middleware(['auth:sanctum', 'ability:refresh_token_access'])->group(function () {
         Route::post('refresh', [AuthController::class, 'refresh'])->name('refresh');
     });
+});
+
+Route::prefix('publication')->name('publication.')->middleware(['auth:sanctum', 'ability:all_api_access'])->group(function () {
+    Route::get('/', [PublicationController::class, 'index'])->name('index');
+    Route::post('/', [PublicationController::class, 'store'])->name('store');
+    Route::patch('/{publication}', [PublicationController::class, 'update'])->name('update');
 });

@@ -12,12 +12,17 @@ class PublicationUpdateService
 {
     public function update(Publication $publication, array $data): Publication
     {
-        /**
-         * @var Model $publishable
-         */
-        $publishable = $publication->publishable()->first();
-        $publishable->fill($data);
-        $publishable->save();
+        DB::transaction(function () use ($publication, $data) {
+            /**
+             * @var Model $publishable
+             */
+            $publishable = $publication->publishable()->first();
+            $publishable->fill($data);
+            $publishable->save();
+
+            $publication->updated_at = now();
+            $publication->save();
+        });
 
         return $publication->fresh();
     }

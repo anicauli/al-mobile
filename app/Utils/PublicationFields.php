@@ -20,9 +20,6 @@ abstract class PublicationFields
         $getChoiceValues = function ($field) use ($publicationClass, $publicationData) {
             $availableValues = [];
             if ($field['options_source'] == 'config') {
-                if (!is_array(config($field['options_path']))) {
-                    dd($field['options_path']);
-                }
                 $availableValues = array_map(fn($i) => $i['value'], config($field['options_path']));
             } else if ($field['options_source'] == 'enum') {
                 $availableValues = array_map(fn($i) => $i->value, call_user_func($field['options_path'] . '::cases' ));
@@ -33,6 +30,7 @@ abstract class PublicationFields
 
         $fields = self::getFieldsByPublicationType($publicationClass);
         $rules = [];
+        $toEmptyFields = [];
         foreach ($fields as $field) {
             if ($field['type'] == 'integer') {
                 $rules[$field['field']] = ['sometimes', 'nullable', 'integer'];
@@ -56,11 +54,14 @@ abstract class PublicationFields
                 $relatedTo = $field['related_to'];
                 if (isset($publicationData[$relatedTo]) && $publicationData[$relatedTo]) {
                     $field['options_path'] = str_replace(
-                        "{$relatedTo}", $publicationData[$relatedTo], $field['options_path']
+                        "{{$relatedTo}}", $publicationData[$relatedTo], $field['options_path']
                     );
                     $availableValues = $getChoiceValues($field);
                     $availableValuesStr = implode(',', $availableValues);
                     $rules[$field['field']] = ['sometimes', 'nullable', 'in:' . $availableValuesStr];
+                } else {
+                    $toEmptyFields[] = $field['field'];
+                    $rules[$field['field']] = ['nullable'];
                 }
                 continue;
             }
@@ -70,6 +71,9 @@ abstract class PublicationFields
             }
         }
 
-        return $rules;
+        return [
+            'rules' => $rules,
+            'to_empty_fields' => $toEmptyFields,
+        ];
     }
 }

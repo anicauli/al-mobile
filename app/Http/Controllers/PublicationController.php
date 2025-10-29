@@ -7,11 +7,25 @@ use App\Http\Requests\Publication\PublicationUpdateRequest;
 use App\Models\Publication;
 use App\Models\User;
 use App\Services\Publication\PublicationCreateService;
+use App\Services\Publication\PublicationFetchService;
 use App\Services\Publication\PublicationUpdateService;
-use Illuminate\Http\Request;
+use App\Utils\Table\Table;
 
 class PublicationController extends Controller
 {
+
+    public function index(PublicationFetchService $publicationFetchService): \Illuminate\Http\JsonResponse
+    {
+        /**
+         * @var User $user
+         */
+        $user = auth()->user();
+
+        $data = Table::basicCreate($publicationFetchService->fetch($user))
+            ->paginateTable();
+
+        return response()->json($data, 200);
+    }
     public function store(
         PublicationCreateService $publicationCreateService,
         PublicationStoreRequest $publicationStoreRequest,

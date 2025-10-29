@@ -12,6 +12,8 @@ class CarPublication extends Model
 
     protected $guarded = ['id'];
 
+    protected $hidden = ['created_at', 'updated_at'];
+
     public function publication(): MorphOne
     {
         return $this->morphOne(Publication::class, 'publishable');
