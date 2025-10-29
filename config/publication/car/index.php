@@ -5,19 +5,20 @@ return [
         'field' => 'make',
         'type' => 'choice',
         'options_source' => 'config',
-        'options_path' => 'publication.basic.make'
+        'options_path' => 'publication.car.basic.make'
     ],
     [
         'field' => 'model',
         'type' => 'related',
+        'related_to' => 'make',
         'options_source' => 'config',
-        'options_path' => 'publication.basic.models.{make}'
+        'options_path' => 'publication.car.basic.models.{make}'
     ],
     [
         'field' => 'vehicle_type',
         'type' => 'choice',
         'options_source' => 'config',
-        'options_path' => 'publication.basic.vehicle_type'
+        'options_path' => 'publication.car.basic.vehicle_type'
     ],
     [
         'field' => 'number_of_seats',
@@ -27,13 +28,13 @@ return [
         'field' => 'number_of_doors',
         'type' => 'choice',
         'options_source' => 'config',
-        'options_path' => 'publication.basic.number_of_doors'
+        'options_path' => 'publication.car.basic.number_of_doors'
     ],
     [
         'field' => 'sliding_door',
         'type' => 'choice',
         'options_source' => 'config',
-        'options_path' => 'publication.basic.sliding_door'
+        'options_path' => 'publication.car.basic.sliding_door'
     ],
     [
         'field' => 'owner_type',
@@ -45,7 +46,7 @@ return [
         'field' => 'used_condition',
         'type' => 'choice',
         'options_source' => 'config',
-        'options_path' => 'publication.basic.used_condition'
+        'options_path' => 'publication.car.basic.used_condition'
     ],
     [
         'field' => 'price',
@@ -59,13 +60,14 @@ return [
         'field' => 'country',
         'type' => 'choice',
         'options_source' => 'config',
-        'options_path' => 'country'
+        'options_path' => 'publication.country'
     ],
     [
         'field' => 'city',
         'type' => 'related',
+        'related_to' => 'country',
         'options_source' => 'config',
-        'options_path' => 'city.{country}'
+        'options_path' => 'publication.city.{country}'
     ],
     [
         'field' => 'fuel_type',
@@ -101,13 +103,13 @@ return [
         'field' => 'driver_type',
         'type' => 'choice',
         'options_source' => 'config',
-        'options_path' => 'publication.technical.driver_type'
+        'options_path' => 'publication.car.technical.driver_type'
     ],
     [
         'field' => 'transmission',
         'type' => 'choice',
         'options_source' => 'config',
-        'options_path' => 'publication.technical.transmission'
+        'options_path' => 'publication.car.technical.transmission'
     ],
     [
         'field' => 'fuel_consumption',
@@ -117,13 +119,13 @@ return [
 //        'field' => 'emission_sticker',
 //        'type' => 'choice',
 //        'options_source' => 'config',
-//        'options_path' => 'publication.technical.emission_sticker'
+//        'options_path' => 'publication.car.technical.emission_sticker'
 //    ],
     [
         'field' => 'emission_class',
         'type' => 'choice',
         'options_source' => 'config',
-        'options_path' => 'publication.technical.emission_class'
+        'options_path' => 'publication.car.technical.emission_class'
     ],
     [
         'field' => 'has_particulate_filter',
@@ -133,13 +135,13 @@ return [
         'field' => 'exterior_colour',
         'type' => 'choice',
         'options_source' => 'config',
-        'options_path' => 'publication.exterior.exterior_colour'
+        'options_path' => 'publication.car.exterior.exterior_colour'
     ],
     [
         'field' => 'trailer_coupling',
         'type' => 'choice',
         'options_source' => 'config',
-        'options_path' => 'publication.exterior.trailer_coupling'
+        'options_path' => 'publication.car.exterior.trailer_coupling'
     ],
     [
         'field' => 'has_trailer_assist',
@@ -149,19 +151,19 @@ return [
         'field' => 'trailer_load_braked',
         'type' => 'choice',
         'options_source' => 'config',
-        'options_path' => 'publication.exterior.trailer_load_braked'
+        'options_path' => 'publication.car.exterior.trailer_load_braked'
     ],
     [
         'field' => 'trailer_load_unbraked',
         'type' => 'choice',
         'options_source' => 'config',
-        'options_path' => 'publication.exterior.trailer_load_unbraked'
+        'options_path' => 'publication.car.exterior.trailer_load_unbraked'
     ],
     [
         'field' => 'nose_weight',
         'type' => 'choice',
         'options_source' => 'config',
-        'options_path' => 'publication.exterior.nose_weight'
+        'options_path' => 'publication.car.exterior.nose_weight'
     ],
     [
         'field' => 'has_parking_sensor_360_camera',
@@ -191,7 +193,7 @@ return [
         'field' => 'cruise_control',
         'type' => 'choice',
         'options_source' => 'config',
-        'options_path' => 'publication.exterior.cruise_control'
+        'options_path' => 'publication.car.exterior.cruise_control'
     ],
     [
         'field' => 'has_abs',
@@ -401,25 +403,25 @@ return [
         'field' => 'interior_colour',
         'type' => 'choice',
         'options_source' => 'config',
-        'options_path' => 'publication.interior.interior_colour'
+        'options_path' => 'publication.car.interior.interior_colour'
     ],
     [
         'field' => 'interior_material',
         'type' => 'choice',
         'options_source' => 'config',
-        'options_path' => 'publication.interior.interior_material'
+        'options_path' => 'publication.car.interior.interior_material'
     ],
     [
         'field' => 'airbags',
         'type' => 'choice',
         'options_source' => 'config',
-        'options_path' => 'publication.interior.airbags'
+        'options_path' => 'publication.car.interior.airbags'
     ],
     [
         'field' => 'air_conditioning',
         'type' => 'choice',
         'options_source' => 'config',
-        'options_path' => 'publication.interior.air_conditioning'
+        'options_path' => 'publication.car.interior.air_conditioning'
     ],
     [
         'field' => 'has_alarm_system',
