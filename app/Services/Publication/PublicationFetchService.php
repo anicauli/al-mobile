@@ -10,9 +10,10 @@ class PublicationFetchService
 {
     public function fetch(?User $user = null): Builder
     {
-        $query = Publication::query();
+        $table = Publication::query()->getModel()->getTable();
+        $query = Publication::query()->select($table . '.*');
         if ($user) {
-            $query->where('user_id', $user->id);
+            $query->where($table  . '.user_id', $user->id);
         }
 
         return $query;

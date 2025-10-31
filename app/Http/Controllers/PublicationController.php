@@ -13,7 +13,6 @@ use App\Utils\Table\Table;
 
 class PublicationController extends Controller
 {
-
     public function list(PublicationFetchService $publicationFetchService): \Illuminate\Http\JsonResponse
     {
         /**
@@ -26,6 +25,7 @@ class PublicationController extends Controller
 
         return response()->json($data, 200);
     }
+
     public function count(PublicationFetchService $publicationFetchService): \Illuminate\Http\JsonResponse
     {
         /**

@@ -20,7 +20,9 @@ abstract class PublicationFields
         $getChoiceValues = function ($field) use ($publicationClass, $publicationData) {
             $availableValues = [];
             if ($field['options_source'] == 'config') {
-                $availableValues = array_map(fn($i) => $i['value'], config($field['options_path']));
+                $options = config($field['options_path']);
+                if (!$options) return [];
+                $availableValues = array_map(fn($i) => $i['value'], $options);
             } else if ($field['options_source'] == 'enum') {
                 $availableValues = array_map(fn($i) => $i->value, call_user_func($field['options_path'] . '::cases' ));
             }

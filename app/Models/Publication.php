@@ -7,6 +7,9 @@ use App\Traits\HasUuid;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -33,7 +36,7 @@ class Publication extends Model
         'status',
     ];
 
-    protected $with = ['publishable'];
+    protected $with = ['car'];
 
     protected function casts(): array
     {
@@ -50,5 +53,13 @@ class Publication extends Model
     public function publishable(): MorphTo
     {
         return $this->morphTo();
+    }
+
+    public function car(): BelongsTo
+    {
+        return $this->belongsTo(CarPublication::class, 'publishable_id', 'id')
+            ->whereHas('publication', function ($query) {
+                $query->where('publishable_type', CarPublication::class);
+            });
     }
 }
