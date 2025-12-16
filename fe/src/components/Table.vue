@@ -35,7 +35,20 @@
       :search="search"
       item-value="name"
       @update:options="loadItems"
-    ></v-data-table-server>
+    >
+      <template #item.ROW_ACTIONS="data">
+        <v-btn
+          v-for="(action, actionIndex) in (data.column.actions || [])"
+          :key="actionIndex"
+          :icon="action.icon"
+          :color="action.color"
+          size="small"
+          variant="text"
+          @click="action.callback?.(data.item)"
+        />
+      </template>
+
+    </v-data-table-server>
   </v-card>
 
   <v-navigation-drawer
@@ -203,7 +216,7 @@ function clearFilter(key) {
   handleFiltersSubmit()
 }
 
-const itemsPerPage = ref(5)
+const itemsPerPage = ref(10)
 const search = ref('')
 const serverItems = ref([])
 const loading = ref(true)

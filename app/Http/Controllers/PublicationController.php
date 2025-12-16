@@ -45,6 +45,13 @@ class PublicationController extends Controller
 
         return response()->json($data, 200);
     }
+
+    public function show(Publication $publication): \Illuminate\Http\JsonResponse
+    {
+        $publication->load('publishable');
+        return response()->json($publication);
+    }
+
     public function store(
         PublicationCreateService $publicationCreateService,
         PublicationStoreRequest $publicationStoreRequest,

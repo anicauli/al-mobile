@@ -8,7 +8,7 @@
       :filters="filters"
     >
       <template #actions>
-        <router-link to="/create">
+        <router-link to="/cars/create">
           <v-btn icon variant="tonal" color="primary" class="mr-2">
             <v-icon>mdi-plus</v-icon>
           </v-btn>
@@ -23,6 +23,9 @@ import Heading from "@/components/Heading.vue";
 import {ref} from "vue";
 import Table from "@/components/Table.vue";
 import {getApiUrl} from "@/utils/api.js";
+import {useRouter} from "vue-router";
+
+const router = useRouter()
 
 const breadcrumbs = ref([
   {
@@ -68,6 +71,36 @@ const fields = ref([
       minute: '2-digit',
       second: '2-digit'
     })
+  },
+  {
+    key: 'ROW_ACTIONS',
+    sortable: false,
+    actions: [
+      {
+        icon: 'mdi-eye',
+        color: 'default',
+        callback: (item) => {
+          console.log(item)
+        }
+      },
+      {
+        icon: 'mdi-pencil',
+        color: 'primary',
+        callback: (item) => {
+          router.push({
+            name: 'cars-edit-basic',
+            params: { id: item.publication.id }
+          })
+        }
+      },
+      {
+        icon: 'mdi-delete',
+        color: 'error',
+        callback: (item) => {
+          console.log(item)
+        }
+      },
+    ]
   }
 ])
 

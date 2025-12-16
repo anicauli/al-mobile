@@ -1,5 +1,5 @@
 import PublicationList from "@/modules/publications/cars/CarsList.vue";
-import CarsEdit from "@/modules/publications/cars/CarsEdit.vue";
+import CarsEditBasic from "@/modules/publications/cars/edit/CarsEditBasic.vue";
 
 export default [
   {
@@ -10,11 +10,11 @@ export default [
   {
     path: 'cars/create',
     name: 'cars-create',
-    component: CarsEdit,
+    component: CarsEditBasic,
   },
   {
-    path: 'cars/:id/edit',
-    name: 'cars-edit',
-    component: CarsEdit,
+    path: 'cars/:id/edit/basic',
+    name: 'cars-edit-basic',
+    component: CarsEditBasic,
   },
 ];
