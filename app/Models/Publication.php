@@ -36,8 +36,6 @@ class Publication extends Model
         'status',
     ];
 
-    protected $with = ['car'];
-
     protected function casts(): array
     {
         return [

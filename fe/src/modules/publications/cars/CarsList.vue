@@ -3,7 +3,7 @@
     <Heading title="Cars" :breadcrumbs="breadcrumbs" />
 
     <Table
-      :url="getApiUrl('publication/list')"
+      :url="getApiUrl('publication/list/car')"
       :fields="fields"
       :filters="filters"
     >
@@ -37,27 +37,27 @@ const breadcrumbs = ref([
 
 const fields = ref([
   {
-    key: 'title',
+    key: 'publication.title',
     title: 'Title',
     sortable: true
   },
   {
-    key: 'car.make',
+    key: 'make',
     title: 'Make',
     sortable: true
   },
   {
-    key: 'car.model',
+    key: 'model',
     title: 'Model',
     sortable: true
   },
   {
-    key: 'car.price',
+    key: 'price',
     title: 'Price',
     sortable: true
   },
   {
-    key: 'created_at',
+    key: 'publication.created_at',
     title: 'Created',
     sortable: true,
     format: (data) => new Date(data).toLocaleString('en-GB', {

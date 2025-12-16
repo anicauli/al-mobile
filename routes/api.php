@@ -18,7 +18,7 @@ Route::prefix('auth')->name('auth.')->group(function () {
 });
 
 Route::prefix('publication')->name('publication.')->middleware(['auth:sanctum', 'ability:all_api_access'])->group(function () {
-    Route::post('/list', [PublicationController::class, 'list'])->name('list');
+    Route::post('/list/{type}', [PublicationController::class, 'list'])->name('list');
     Route::post('/count', [PublicationController::class, 'count'])->name('count');
     Route::post('/', [PublicationController::class, 'store'])->name('store');
     Route::patch('/{publication}', [PublicationController::class, 'update'])->name('update');

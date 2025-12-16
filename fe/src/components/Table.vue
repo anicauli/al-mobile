@@ -120,7 +120,7 @@
 <script setup>
 import {ref, watch} from 'vue'
 import axios from 'axios'
-import {cloneDeep} from "lodash"
+import {cloneDeep, get, set} from "lodash"
 const props = defineProps({
   url: String,
   fields: Array,
@@ -229,15 +229,19 @@ async function loadItems ({ page, itemsPerPage, sortBy }) {
     }
   )
 
-  serverItems.value = res.data.results.map(item => {
-    for (const kItem in item) {
-      const field = props.fields.find(f => f.key === kItem)
-      if (field && field.format) {
-        item[kItem] = field.format(item[kItem], item)
+  const results = res.data.results
+  // Check if there are format functions given for the table fields.
+  for (const field of props.fields) {
+    if (field.format) {
+      for (const result of results) {
+        const value = get(result, field.key)
+        const formattedValue = field.format(value, result)
+        set(result, field.key, formattedValue)
       }
     }
-    return item
-  })
+  }
+
+  serverItems.value = results
   totalItems.value = res.data.total
   loading.value = false
 }

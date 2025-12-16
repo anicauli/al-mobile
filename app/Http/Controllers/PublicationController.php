@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Publication\PublicationStoreRequest;
 use App\Http\Requests\Publication\PublicationUpdateRequest;
+use App\Models\CarPublication;
 use App\Models\Publication;
 use App\Models\User;
 use App\Services\Publication\PublicationCreateService;
@@ -13,14 +14,20 @@ use App\Utils\Table\Table;
 
 class PublicationController extends Controller
 {
-    public function list(PublicationFetchService $publicationFetchService): \Illuminate\Http\JsonResponse
+    public function list(PublicationFetchService $publicationFetchService, string $type): \Illuminate\Http\JsonResponse
     {
+        $model = [
+            'car' => CarPublication::class
+        ][$type] ?? null;
+
+        abort_if(!$model, 404);
+
         /**
          * @var User $user
          */
         $user = auth()->user();
 
-        $data = Table::basicCreate($publicationFetchService->fetch($user))
+        $data = Table::basicCreate($publicationFetchService->fetch($model, $user))
             ->paginateTable();
 
         return response()->json($data, 200);
